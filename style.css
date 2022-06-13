@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+a{
+    text-decoration: none;
+}
+ul,li{
+    list-style: none;
+}
+body{
+    background: rgb(0, 0, 0) no-repeat center/cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Change color */
+
+  /*Color mode HSL(hue, saturation, lightness)*/
+  /*
+      Blue: hsl(207, 90%, 61%)
+      Purple: hsl(250, 66%, 75%)
+      Pink Flamingo: hsl(312 , 100% , 68%)
+      Pink: hsl(356, 66%, 75%)
+      Teal: hsl(174, 63%, 62%)
+      Starship: hsl(79 , 88% , 61%)
+      Harlequin: hsl(119 , 93% , 58%)
+  */
+ 
+:root{
+--hue: 79;
+--sat: 88%;
+--lig: 61%;
+--first-color: hsl(var(--hue), var(--sat), var(--lig));
+--first-color-alt: hsl(var(--hue), var(--sat), 57   %);  /* -4% Only  */
+}
+
+
+/* Main Style */
+
+.card{
+    /* position: relative; */
+    margin-right: 10px;
+    margin-left: 10px;
+    max-width: 500px;
+    width: 100%;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 25px 25px rgb(0, 0, 0, 0.1);
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    transition: 0.5s;
+    display: flex;
+    top: 36%;
+    right: -9.5%;
+    z-index: 13;
+    justify-content: center;
+    align-items: center;
+}
+.card__link{
+    color: var(--first-color);
+}
+.card__link:hover{
+    color:var(--first-color);
+}
+.card:hover{
+    transform: scale(1.2);
+    background: rgba(255, 255, 255, 0.2);
+}
+.card::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: var(--first-color);
+}
+.card .content{
+    position: relative;
+    display: flex;
+    margin-top: -80px;
+    gap: 20px;
+    align-items: center;
+}
+.card .content .imgBx{
+    position: relative;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: var(--first-color);
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.1);
+}
+.card .content .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.card .content .details{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* color: #1111; */
+}
+.card .content .details div{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+.card .content .details h3{
+    font-weight: 600;
+    color: wheat;
+}
+.card .content .details ion-icon{
+    font-size: 1.4em;
+    color: var(--first-color);
+}
+
+/* Breakpoints */
+
+@media (max-width: 605px) {
+    .card:hover{
+        transform: scale(1.1);
+    }  
+}
+@media (max-width: 575px) {
+    .card:hover{
+        transform: scale(1);
+        transform: translateY(-20px);
+    }
+}
+@media (max-width: 340px) {
+    .card .content .imgBx{
+        width: 90px;
+        height: 90px;
+    }
+    .card .content{
+        gap: 10px;
+    }
+}
+
+/* Backround style */
+
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #131313;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.layer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140px;
+    height: 250vh;
+    background: #fff;
+    box-shadow: inset -10px 0 40px rgba(0, 0 , 0, 1),
+    inset 10px 0 40px rgba(0, 0 , 0, 1),
+    inset -10px 0 10px rgba(255, 255 , 255, 0.25),
+    inset 10px 0 10px rgba(255, 255 , 255, 0.25),
+    0 0 50px rgba(0, 0 , 0,1);
+}
+.layer.layer1{
+    background: #222 radial-gradient(#6dff73 9px, #000 9px, #000 13px, transparent 13px );
+    background-size: 35px 35px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: 11;
+    animation: animate 2s linear infinite;
+}
+@keyframes animate {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: 35px -35px;
+    }
+}
+@keyframes animate_two{
+    0%{
+        background-position: 35px -35px;
+    }
+    100%{
+        background-position: 0 0;
+    }
+}
+.layer.layer2{
+    background: #222 radial-gradient(#db0aff 9px, #000 9px, #000 13px, transparent 13px );
+    background-size: 35px 35px;
+    transform: translate(-50%, -38%) rotate(45deg);
+    z-index: 3;
+    animation: animate_two 2s linear infinite;
+}
+.layer.layer3{
+    background: #222 radial-gradient(#03a9f4 9px, #000 9px, #000 13px, transparent 13px );
+    background-size: 35px 35px;
+    transform: translate(-50%, -62%) rotate(45deg);
+    z-index: 3;
+    animation: animate 2s linear infinite;
+}
+
+.layer.layer4{
+    background: #222 radial-gradient(#ffc107 9px, #000 9px, #000 13px, transparent 13px );
+    background-size: 35px 35px;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    z-index: 12;
+    animation: animate_two 2s linear infinite;
+}
+.layer.layer5{
+    background: #222 radial-gradient(#e91e63 9px, #000 9px, #000 13px, transparent 13px );
+    background-size: 35px 35px;
+    transform: translate(-50%, -38%) rotate(-45deg);
+    z-index: 10;
+    animation: animate 2s linear infinite;
+}
+.layer.layer6{
+    background: #222 radial-gradient(#0f0 9px, #000 9px, #000 13px, transparent 13px );
+    background-size: 35px 35px;
+    transform: translate(-50%, -62%) rotate(-45deg);
+    z-index: 10;
+    animation: animate_two 2s linear infinite;
+}
